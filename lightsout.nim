@@ -20,12 +20,21 @@ method draw(self: ref GameScene) =
   # draw stuff
   for i in 0..NUM_SQUARES - 1 :
       for k in 0..NUM_SQUARES - 1:
-          let x = i * int(SQUARE_SIZE)
-          let y = k * int(SQUARE_SIZE)
-          let xoff = x + SQUARE_MARGIN
-          let yoff = y + SQUARE_MARGIN
-          let rect = graphics.TRect((xoff, yoff, int(SQUARE_BODY), int(SQUARE_BODY)))
-          self.ctl.display.fillRect(rect, colFuchsia)
+          let
+            x = i * int(SQUARE_SIZE)
+            y = k * int(SQUARE_SIZE)
+            xoff = x + SQUARE_MARGIN
+            yoff = y + SQUARE_MARGIN
+            rect = graphics.TRect((xoff, yoff, int(SQUARE_BODY), int(SQUARE_BODY)))
+            mx = self.ctl.mouseX
+            my = self.ctl.mouseY
+
+          var color: Color
+          if mx >= x and mx <= x + int(SQUARE_SIZE) and my >= y and my <= y + int(SQUARE_SIZE):
+            color = colFuchsia
+          else:
+            color = colYellow
+          self.ctl.display.fillRect(rect, color)
 
 
 
