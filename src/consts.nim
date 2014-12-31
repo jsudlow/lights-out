@@ -1,3 +1,5 @@
+import colors
+
 const
   WIDTH* = 500
   HEIGHT* = 500
@@ -10,3 +12,6 @@ const
   MARGIN_RATIO = 0.20
   SQUARE_MARGIN* = int(SQUARE_SIZE * MARGIN_RATIO)
   SQUARE_BODY* = SQUARE_SIZE - (SQUARE_MARGIN * 2)
+
+  SQUARE_COLOR* = colBlue
+  SQUARE_HIGHLIGHT* = colYellow

@@ -31,9 +31,9 @@ method draw(self: ref GameScene) =
 
           var color: Color
           if mx >= x and mx <= x + int(SQUARE_SIZE) and my >= y and my <= y + int(SQUARE_SIZE):
-            color = colFuchsia
+            color = SQUARE_HIGHLIGHT
           else:
-            color = colYellow
+            color = SQUARE_COLOR
           self.ctl.display.fillRect(rect, color)
 
 
