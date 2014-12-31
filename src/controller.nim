@@ -9,6 +9,7 @@ type Controller* = object
   mods*: ModMap
   mouseX*, mouseY*: int
   mouseDown*: bool
+  grid*: array[0..TOTAL_SQUARES - 1, bool]
 
 proc newController*(display: graphics.PSurface): ref Controller =
   result = new(Controller)

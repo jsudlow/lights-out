@@ -17,7 +17,7 @@ method draw(self: ref GameScene) =
   # clear screen
   self.ctl.display.fillRect(graphics.TRect((0, 0, self.ctl.display.w, self.ctl.display.h)), colBlack)
 
-
+  
   # draw stuff
   for i in 0..NUM_SQUARES - 1 :
       for k in 0..NUM_SQUARES - 1:
@@ -33,6 +33,49 @@ method draw(self: ref GameScene) =
           var color: Color
           if mx >= x and mx <= x + int(SQUARE_SIZE) and my >= y and my <= y + int(SQUARE_SIZE):
             color = SQUARE_HIGHLIGHT
+            if self.ctl.mouseDown:
+                #test if mous down is working correctly; it is
+                #echo "MOUSE DOWN"
+                #get all squares around the square that is clicked
+                
+                #establish row and col coordinate mapping
+                echo i  #cols
+                echo k  #rows
+
+                #find neighbor to the north
+                if k > 0:
+                    var north_x = i
+                    var north_y = k -1
+                    echo "found valid north neighbor at:"
+                    echo north_x
+                    echo north_y
+                
+                #find neighbor to the south
+                if k < NUM_SQUARES -1:
+                    var south_x = i
+                    var south_y = k + 1
+                    echo "found valid south neighbor at:"
+                    echo south_x
+                    echo south_y
+
+                #find neighbors to the west
+                if i > 0:
+                    var west_x = i - 1
+                    var west_y = k
+                    echo "found valid west neighbor at: "
+                    echo west_x
+                    echo west_y
+                #find neighbors to the east    
+                if i < NUM_SQUARES -1:
+                    var east_x = i + 1
+                    var east_y = k
+                    echo "found valid east neighbor at: "
+                    echo east_x
+                    echo east_y
+
+
+
+
           else:
             color = SQUARE_COLOR
           self.ctl.display.fillRect(rect, color)
