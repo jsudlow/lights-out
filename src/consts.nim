@@ -6,5 +6,5 @@ const
   H_HEIGHT* = HEIGHT / 2
 
   NUM_SQUARES* = 3
-  SQUARE_WIDTH* = WIDTH/NUM_SQUARES
-  SQUARE_SPACE* = SQUARE_WIDTH/3 #still not figured out
+  SQUARE_WIDTH* = WIDTH/NUM_SQUARES - 30
+  SQUARE_SPACE* = SQUARE_WIDTH #still not figured out

@@ -18,10 +18,11 @@ method draw(self: ref GameScene) =
   self.ctl.display.fillRect(graphics.TRect((0, 0, self.ctl.display.w, self.ctl.display.h)), colBlack)
   
   echo int(SQUARE_SPACE)
+  echo int(SQUARE_WIDTH)
   # draw stuff
   for i in 0..NUM_SQUARES - 1 :
       for k in 0..NUM_SQUARES - 1:
-          self.ctl.display.fillRect((50+(i*75), 50+(k*75), int(SQUARE_WIDTH) - int(SQUARE_SPACE), int(SQUARE_WIDTH) - int(SQUARE_SPACE)), colFuchsia)
+          self.ctl.display.fillRect((50+(i*75), 50+(k*75), int(SQUARE_WIDTH),int(SQUARE_WIDTH)), colFuchsia)
 
           
 
