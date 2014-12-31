@@ -5,5 +5,6 @@ const
   H_WIDTH* = WIDTH / 2
   H_HEIGHT* = HEIGHT / 2
 
-  NUM_SQUARES* = 5
+  NUM_SQUARES* = 3
   SQUARE_WIDTH* = WIDTH/NUM_SQUARES
+  SQUARE_SPACE* = SQUARE_WIDTH/3 #still not figured out
