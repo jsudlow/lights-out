@@ -24,7 +24,7 @@ method draw(self: ref GameScene) =
           let y = k * int(SQUARE_SIZE)
           let xoff = x + SQUARE_MARGIN
           let yoff = y + SQUARE_MARGIN
-          let rect = graphics.TRect((x, y, int(SQUARE_BODY), int(SQUARE_BODY)))
+          let rect = graphics.TRect((xoff, yoff, int(SQUARE_BODY), int(SQUARE_BODY)))
           self.ctl.display.fillRect(rect, colFuchsia)
 
 
