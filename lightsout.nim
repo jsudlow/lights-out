@@ -19,25 +19,27 @@ method draw(self: ref GameScene) =
   
 
   # draw stuff
-  for i in 0..NUM_SQUARES:
-      for k in 0..NUM_SQUARES:
-          echo i
+  for i in 0..(NUM_SQUARES - 1 ):
+      for k in 0..(NUM_SQUARES - 1):
+          self.ctl.display.fillRect((50+(i*75), 50+(k*75), 50, 50), colFuchsia)
+
+          
 
   
   #top row
-  self.ctl.display.fillRect((50, 50, 100, 100), colFuchsia)
-  self.ctl.display.fillRect((175, 50, 100, 100), colFuchsia)
-  self.ctl.display.fillRect((300, 50, 100, 100), colFuchsia)
+  #self.ctl.display.fillRect((50, 50, 100, 100), colFuchsia)
+  #self.ctl.display.fillRect((175, 50, 100, 100), colFuchsia)
+  #self.ctl.display.fillRect((300, 50, 100, 100), colFuchsia)
   
   #middle row
-  self.ctl.display.fillRect((50, 175, 100, 100), colFuchsia)
-  self.ctl.display.fillRect((175, 175, 100, 100), colFuchsia)
-  self.ctl.display.fillRect((300, 175, 100, 100), colFuchsia)
+  #self.ctl.display.fillRect((50, 175, 100, 100), colFuchsia)
+  #self.ctl.display.fillRect((175, 175, 100, 100), colFuchsia)
+  #self.ctl.display.fillRect((300, 175, 100, 100), colFuchsia)
 
   #bottm row
-  self.ctl.display.fillRect((50, 300, 100, 100), colFuchsia)
-  self.ctl.display.fillRect((175, 300, 100, 100), colFuchsia)
-  self.ctl.display.fillRect((300, 300, 100, 100), colFuchsia)
+  #self.ctl.display.fillRect((50, 300, 100, 100), colFuchsia)
+  #self.ctl.display.fillRect((175, 300, 100, 100), colFuchsia)
+  #self.ctl.display.fillRect((300, 300, 100, 100), colFuchsia)
   
 
 var game_scene = new(GameScene)
