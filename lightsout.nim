@@ -16,22 +16,23 @@ method update(self: ref GameScene, t, dt: int) =
 method draw(self: ref GameScene) =
   # clear screen
   self.ctl.display.fillRect(graphics.TRect((0, 0, self.ctl.display.w, self.ctl.display.h)), colBlack)
-  
-  echo int(SQUARE_SPACE)
-  echo int(SQUARE_WIDTH)
+
+
   # draw stuff
   for i in 0..NUM_SQUARES - 1 :
       for k in 0..NUM_SQUARES - 1:
-          self.ctl.display.fillRect((50+(i*75), 50+(k*75), int(SQUARE_WIDTH),int(SQUARE_WIDTH)), colFuchsia)
+          let x = i * int(SQUARE_SIZE)
+          let y = k * int(SQUARE_SIZE)
+          let xoff = x + SQUARE_MARGIN
+          let yoff = y + SQUARE_MARGIN
+          let rect = graphics.TRect((x, y, int(SQUARE_BODY), int(SQUARE_BODY)))
+          self.ctl.display.fillRect(rect, colFuchsia)
 
-          
-
-  
   #top row
   #self.ctl.display.fillRect((50, 50, 100, 100), colFuchsia)
   #self.ctl.display.fillRect((175, 50, 100, 100), colFuchsia)
   #self.ctl.display.fillRect((300, 50, 100, 100), colFuchsia)
-  
+
   #middle row
   #self.ctl.display.fillRect((50, 175, 100, 100), colFuchsia)
   #self.ctl.display.fillRect((175, 175, 100, 100), colFuchsia)
@@ -41,7 +42,7 @@ method draw(self: ref GameScene) =
   #self.ctl.display.fillRect((50, 300, 100, 100), colFuchsia)
   #self.ctl.display.fillRect((175, 300, 100, 100), colFuchsia)
   #self.ctl.display.fillRect((300, 300, 100, 100), colFuchsia)
-  
+
 
 var game_scene = new(GameScene)
 var game_app = new(App)
