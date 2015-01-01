@@ -15,3 +15,7 @@ proc pressed*(self: KeyMap, key: TKey): bool =
 
 type ModMap* = Table[TMod, bool]
 
+proc iterSquares*(self: ref, task: proc(self: ref, i, k: int)) =
+  for i in 0..NUM_SQUARES - 1:
+    for k in 0..NUM_SQUARES -1:
+      task(self, i, k)
