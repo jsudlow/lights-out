@@ -33,7 +33,48 @@ method mouse_down(self: ref ClickSystem, event: PMouseButtonEvent) =
     i = system.i
     k = system.k
     active = self.scene.ctl.grid[(k * NUM_SQUARES) + i]
+
   self.scene.ctl.grid[(k * NUM_SQUARES) + i] = not active
+  
+  #find neighbor to the north
+  if k > 0:
+      var north_x = i
+      var north_y = k -1
+      echo "found valid north neighbor at:"
+      echo north_x
+      echo north_y
+      var active_n = self.scene.ctl.grid[((k - 1) * NUM_SQUARES) + i]
+      self.scene.ctl.grid[((k - 1) * NUM_SQUARES) + i] = not active_n
+  
+  #find neighbor to the south
+  if k < NUM_SQUARES -1:
+      var south_x = i
+      var south_y = k + 1
+      echo "found valid south neighbor at:"
+      echo south_x
+      echo south_y
+      var active_s = self.scene.ctl.grid[((k + 1) * NUM_SQUARES) + i]
+      self.scene.ctl.grid[((k + 1) * NUM_SQUARES) + i] = not active_s
+
+  #find neighbors to the west
+  if i > 0:
+      var west_x = i - 1
+      var west_y = k
+      echo "found valid west neighbor at: "
+      echo west_x
+      echo west_y
+      var active_w = self.scene.ctl.grid[(k * NUM_SQUARES) + i - 1]
+      self.scene.ctl.grid[(k * NUM_SQUARES) + i - 1] = not active_w
+
+  #find neighbors to the east
+  if i < NUM_SQUARES -1:
+      var east_x = i + 1
+      var east_y = k
+      echo "found valid east neighbor at: "
+      echo east_x
+      echo east_y
+      var active_e = self.scene.ctl.grid[(k * NUM_SQUARES) + i + 1]
+      self.scene.ctl.grid[(k * NUM_SQUARES) + i + 1] = not active_e
 
 proc update(self: ref HoverSystem, t, dt: int) =
   for i in 0..NUM_SQUARES - 1:
@@ -83,49 +124,7 @@ method draw(self: ref GameScene) =
           (xoff, yoff, int(SQUARE_BODY), int(SQUARE_BODY)))
 
       self.ctl.display.fillRect(rect, color)
-      #   if self.ctl.mouseDown:
-      #       #test if mous down is working correctly; it is
-      #       #echo "MOUSE DOWN"
-      #       #get all squares around the square that is clicked
-
-      #       #establish row and col coordinate mapping
-      #       echo i  #cols
-      #       echo k  #rows
-
-      #       #find neighbor to the north
-      #       if k > 0:
-      #           var north_x = i
-      #           var north_y = k -1
-      #           echo "found valid north neighbor at:"
-      #           echo north_x
-      #           echo north_y
-
-      #       #find neighbor to the south
-      #       if k < NUM_SQUARES -1:
-      #           var south_x = i
-      #           var south_y = k + 1
-      #           echo "found valid south neighbor at:"
-      #           echo south_x
-      #           echo south_y
-
-      #       #find neighbors to the west
-      #       if i > 0:
-      #           var west_x = i - 1
-      #           var west_y = k
-      #           echo "found valid west neighbor at: "
-      #           echo west_x
-      #           echo west_y
-      #       #find neighbors to the east
-      #       if i < NUM_SQUARES -1:
-      #           var east_x = i + 1
-      #           var east_y = k
-      #           echo "found valid east neighbor at: "
-      #           echo east_x
-      #           echo east_y
-      # else:
-      #   color = SQUARE_COLOR
-
-
+      
 var game_scene = new GameScene
 var game_app = new(App)
 game_app.init(game_scene, WIDTH, HEIGHT, "Lights Out!")
