@@ -1,6 +1,6 @@
 import graphics, colors, math, strutils, sdl, algorithm
 from graphics import TRect
-
+import controller
 import app
 
 type
@@ -14,7 +14,9 @@ type
   GameScene = object of Scene
     hoverSystem*: ref HoverSystem
     clickSystem*: ref ClickSystem
+    hasWon: bool
 
+#Constructor like procs to init new hover and click systems
 proc newHoverSystem(scene: ref GameScene): ref HoverSystem =
   result = new HoverSystem
   result.scene = scene
@@ -90,6 +92,9 @@ proc update(self: ref HoverSystem, t, dt: int) =
       if hover_x and hover_y:
         self.i = i
         self.k = k
+  
+  
+      
 
 method enter(self: ref GameScene) =
   self.hoverSystem = newHoverSystem(self)
@@ -97,7 +102,9 @@ method enter(self: ref GameScene) =
 
 method update(self: ref GameScene, t, dt: int) =
   self.hoverSystem.update(t, dt)
-
+  var hasWon = self.ctl.hasPlayerWon()
+  self.hasWon = hasWon
+  
 method mouse_down(self: ref GameScene, event: PMouseButtonEvent) =
   self.clickSystem.mouse_down(event)
 
@@ -114,6 +121,8 @@ method draw(self: ref GameScene) =
         color = SQUARE_HIGHLIGHT
       if self.ctl.grid[(k * NUM_SQUARES) + i]:
         color = SQUARE_HIGHLIGHT
+      if (self.hasWon):
+        color = WIN_COLOR
 
       let
         x = i * int(SQUARE_SIZE)

@@ -18,3 +18,4 @@ const
 
   SQUARE_COLOR* = colBlue
   SQUARE_HIGHLIGHT* = colYellow
+  WIN_COLOR* = colGreen
