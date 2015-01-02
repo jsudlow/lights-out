@@ -2,6 +2,7 @@ import graphics, colors, math, strutils, sdl, algorithm
 from graphics import TRect
 import controller
 import app
+import menu
 
 type
   HoverSystem = object
@@ -15,6 +16,8 @@ type
     hoverSystem*: ref HoverSystem
     clickSystem*: ref ClickSystem
     hasWon: bool
+
+  MenuScene = object of Scene
 
 #Constructor like procs to init new hover and click systems
 proc newHoverSystem(scene: ref GameScene): ref HoverSystem =
@@ -92,9 +95,6 @@ proc update(self: ref HoverSystem, t, dt: int) =
       if hover_x and hover_y:
         self.i = i
         self.k = k
-  
-  
-      
 
 method enter(self: ref GameScene) =
   self.hoverSystem = newHoverSystem(self)
@@ -133,8 +133,10 @@ method draw(self: ref GameScene) =
           (xoff, yoff, int(SQUARE_BODY), int(SQUARE_BODY)))
 
       self.ctl.display.fillRect(rect, color)
-      
-var game_scene = new GameScene
+
+var menu_scene = new MenuScene      
+#var game_scene = new GameScene
 var game_app = new(App)
-game_app.init(game_scene, WIDTH, HEIGHT, "Lights Out!")
+#game_app.init(game_scene, WIDTH, HEIGHT, "Lights Out!")
+game_app.init(menu_scene, WIDTH, HEIGHT, "Main Menu - Lights Out!")
 game_app.run()
