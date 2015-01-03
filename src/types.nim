@@ -30,6 +30,7 @@ type
 
   MenuScene* = object of Scene
     menuText*: graphics.PSurface
+    menuRect*: graphics.TRect
 
   HoverSystem* = object
     scene*: ref GameScene

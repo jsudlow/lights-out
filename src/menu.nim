@@ -3,11 +3,15 @@ import app
 import scene
 
 method enter*(self: ref MenuScene) =
-  #var myFont = openFont("src/fonts/Pacifo.ttf",14)
-  #var myColor = sdl.TColor(r:250, g:250, b:250)
-  #var surfaceText = renderTextSolid(myFont,"My test Font",myColor)
-  var blankSurface = newSurface(100,100)
-  self.menuText = blankSurface
+  initDefaultFont("fonts/Pacifico.ttf", 14, colBlue)
+  let
+    menu_text = "Hello World"
+    menu_size = textBounds(menu_text)
+  self.menuRect = graphics.TRect((
+    0, 0, menu_size.width, menu_size.height))
+  self.menuText = newSurface(menu_size.width, menu_size.height)
+  self.menuText.drawText((x: 0, y: 0), menu_text)
+
 method key_down*(self: ref MenuScene, key: TKey, mods: TMod) =
   case key:
     of K_SPACE:
@@ -22,6 +26,4 @@ method draw*(self: ref MenuScene) =
   let screen_rect = graphics.TRect(
     (0, 0, self.ctl.display.w, self.ctl.display.h))
   self.ctl.display.fillRect(screen_rect, colBlack)
-  var tpoint:TPoint = (x: 25, y:25);
-  graphics.drawText(self.menuText,tpoint,"Hiiii")
-  
+  self.ctl.display.blit(screen_rect, self.menuText, self.menuRect)
