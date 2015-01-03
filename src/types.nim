@@ -19,22 +19,20 @@ type
     ctl*: ref Controller
     manager*: ref SceneManager
 
-
   SceneManager* = object of RootObj
     ctl*: ref Controller
     scene*: ref Scene
- 
 
   GameScene* = object of Scene
     hoverSystem*: ref HoverSystem
     clickSystem*: ref ClickSystem
-    hasWon: bool
+    hasWon*: bool
 
   MenuScene* = object of Scene
 
   HoverSystem* = object
-    scene: ref GameScene
-    i, k: int
+    scene*: ref GameScene
+    i*, k*: int
 
   ClickSystem* = object
-    scene: ref GameScene
+    scene*: ref GameScene

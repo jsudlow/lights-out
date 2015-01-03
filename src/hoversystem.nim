@@ -1,6 +1,4 @@
-import src/types
-
-#Constructor like procs to init new hover and click systems
+import game
 
 proc newHoverSystem(scene: ref GameScene): ref HoverSystem =
   result = new HoverSystem

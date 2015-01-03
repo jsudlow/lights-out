@@ -17,7 +17,7 @@ method mouse_motion*(self: ref Scene, event: PMouseMotionEvent) =
   discard
 
 method draw*(self: ref Scene) =
-  discard
+  echo "Scene.draw"
 
 method update*(self: ref Scene, t, dt: int) =
   discard
