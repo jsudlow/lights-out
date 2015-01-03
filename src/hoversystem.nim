@@ -1,12 +1,12 @@
 import game
 
-proc newHoverSystem(scene: ref GameScene): ref HoverSystem =
+proc newHoverSystem*(scene: ref GameScene): ref HoverSystem =
   result = new HoverSystem
   result.scene = scene
   result.i = 0
   result.k = 0
 
-proc update(self: ref HoverSystem, t, dt: int) =
+proc update*(self: ref HoverSystem, t, dt: int) =
   for i in 0..NUM_SQUARES - 1:
     for k in 0..NUM_SQUARES - 1:
       let

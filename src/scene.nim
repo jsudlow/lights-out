@@ -1,5 +1,5 @@
 
-import sdl
+import sdl, typetraits
 
 method enter*(self: ref Scene) =
   discard
@@ -17,7 +17,7 @@ method mouse_motion*(self: ref Scene, event: PMouseMotionEvent) =
   discard
 
 method draw*(self: ref Scene) =
-  echo "Scene.draw"
+  discard
 
 method update*(self: ref Scene, t, dt: int) =
   discard
@@ -28,7 +28,6 @@ method set_scene*(self: ref SceneManager, scene: ref Scene) =
   self.scene = scene
   self.scene.manager = self
   self.scene.ctl = self.ctl
-  echo("Entering scene")
   self.scene.enter()
 
 proc newSceneManager*(ctl: ref Controller, first_scene: ref Scene): ref SceneManager =

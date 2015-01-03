@@ -1,6 +1,6 @@
-import sdl
+import sdl, graphics, colors
 
-import game, hover,
+import hoversystem, clicksystem, controller
 
 method enter*(self: ref GameScene) =
   self.hoverSystem = newHoverSystem(self)
@@ -15,7 +15,6 @@ method mouse_down*(self: ref GameScene, event: PMouseButtonEvent) =
   self.clickSystem.mouse_down(event)
 
 method draw*(self: ref GameScene) =
-  echo "GameScene.draw"
   # clear screen
   let screen_rect = graphics.TRect(
     (0, 0, self.ctl.display.w, self.ctl.display.h))
