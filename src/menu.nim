@@ -3,15 +3,19 @@ import app
 import scene
 
 method enter*(self: ref MenuScene) =
-  initDefaultFont("fonts/Pacifico.ttf", 14, colBlue)
+  initDefaultFont("fonts/Pacifico.ttf", 36, colGreen)
   let
-    menu_text = "Hello World"
-    menu_size = textBounds(menu_text)
-  self.menuRect = graphics.TRect((
-    0, 0, menu_size.width, menu_size.height))
-  self.menuText = newSurface(menu_size.width, menu_size.height)
-  self.menuText.drawText((x: 0, y: 0), menu_text)
+    play_text = "Press Enter to Play"
+    quit_text = "Press Space to Quit"
+    title_text = "Lights Out!"
 
+    play_size = textBounds(play_text)
+  self.menuRect = graphics.TRect((
+    0, 0, 400, 400))
+  self.menuText = newSurface(400, 400)
+  self.menuText.drawText((x: 100, y: 100), title_text)
+  self.menuText.drawText((x: 100, y: 200), play_text)
+  self.menuText.drawText((x: 100, y:250), quit_text)
 method key_down*(self: ref MenuScene, key: TKey, mods: TMod) =
   case key:
     of K_SPACE:
