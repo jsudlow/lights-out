@@ -29,6 +29,7 @@ type
     hasWon*: bool
 
   MenuScene* = object of Scene
+    menuText*: graphics.PSurface
 
   HoverSystem* = object
     scene*: ref GameScene
