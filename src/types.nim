@@ -1,4 +1,4 @@
-import graphics
+import graphics,sdl
 
 type
   App* = object
