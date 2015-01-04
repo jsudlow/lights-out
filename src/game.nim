@@ -5,6 +5,7 @@ import hoversystem, clicksystem, controller
 method enter*(self: ref GameScene) =
   self.hoverSystem = newHoverSystem(self)
   self.clickSystem = newClickSystem(self)
+  randomGridWalk(self)
 
 method update*(self: ref GameScene, t, dt: int) =
   self.hoverSystem.update(t, dt)
