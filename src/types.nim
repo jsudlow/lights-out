@@ -14,6 +14,9 @@ type
     mouseX*, mouseY*: int
     mouseDown*: bool
     grid*: array[0..TOTAL_SQUARES - 1, bool]
+    fonts*: Table[string, PFont]
+    messages*: seq[ref MessageBox]
+
 
   Scene* = object of RootObj
     ctl*: ref Controller
@@ -38,3 +41,12 @@ type
 
   ClickSystem* = object
     scene*: ref GameScene
+  
+  MessageBox* = object
+    messageText*: string
+    x*,y*,size*: int
+    font*: PFont
+    s*: graphics.PSurface
+    isVisible*: bool
+
+
