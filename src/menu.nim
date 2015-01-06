@@ -1,21 +1,23 @@
 import sdl, graphics, colors,sdl_ttf
+
 import app
 import scene
+import controller
 
 method enter*(self: ref MenuScene) =
-  initDefaultFont("fonts/Pacifico.ttf", 36, colGreen)
-  let
-    play_text = "Press Enter to Play"
-    quit_text = "Press Space to Quit"
-    title_text = "Lights Out!"
+  self.ctl.newFont("title", "fonts/Pacifico.ttf", 36, colGreen)
 
-    play_size = textBounds(play_text)
-  self.menuRect = graphics.TRect((
-    0, 0, 400, 400))
-  self.menuText = newSurface(400, 400)
-  self.menuText.drawText((x: 100, y: 100), title_text)
-  self.menuText.drawText((x: 100, y: 200), play_text)
-  self.menuText.drawText((x: 100, y:250), quit_text)
+  self.title_msg = self.ctl.addMessage(
+    "Lights Out!", "title", 100, 100)
+  self.play_msg = self.ctl.addMessage(
+    "Press Enter to Play", "title", 100, 200)
+  self.quit_msg = self.ctl.addMessage(
+    "Press Space to Quit", "title", 100, 250)
+
+  self.title_msg.isVisible = true
+  self.play_msg.isVisible = true
+  self.quit_msg.isVisible = true
+
 method key_down*(self: ref MenuScene, key: TKey, mods: TMod) =
   case key:
     of K_SPACE:
@@ -30,4 +32,3 @@ method draw*(self: ref MenuScene) =
   let screen_rect = graphics.TRect(
     (0, 0, self.ctl.display.w, self.ctl.display.h))
   self.ctl.display.fillRect(screen_rect, colBlack)
-  self.ctl.display.blit(screen_rect, self.menuText, self.menuRect)

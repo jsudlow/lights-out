@@ -32,8 +32,9 @@ type
     hasWon*: bool
 
   MenuScene* = object of Scene
-    menuText*: graphics.PSurface
-    menuRect*: graphics.TRect
+    title_msg*: ref MessageBox
+    play_msg*: ref MessageBox
+    quit_msg*: ref MessageBox
 
   HoverSystem* = object
     scene*: ref GameScene
@@ -41,7 +42,7 @@ type
 
   ClickSystem* = object
     scene*: ref GameScene
-  
+
   MessageBox* = object
     messageText*: string
     x*,y*,size*: int

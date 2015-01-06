@@ -2,6 +2,7 @@ import graphics, sdl, tables, strutils
 
 import scene
 import controller
+import messagebox
 
 proc init*(self: ref App,
            first_scene: ref Scene,
@@ -53,5 +54,7 @@ proc run*(self: ref App) =
     self.pump()
     self.manager.scene.update(t, dt)
     self.manager.scene.draw()
+    for msgBox in self.ctl.messages:
+      msgBox.draw(self.display)
     sdl.updateRect(self.display.s, 0, 0, self.display.w.int32, self.display.h.int32)
   sdl.quit()
