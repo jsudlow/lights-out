@@ -14,7 +14,8 @@ proc newMessageBox*(messageText: string, x, y: int, font: PFont ): ref MessageBo
 
 
 proc draw*(self: ref MessageBox, target: PSurface) =
-    target.blit(
-        (x: self.x, y: self.y, width: target.w, height: target.h),
-        self.s, (x:0, y:0, width: self.s.w, height: self.s.h)
-    )
+    if(self.isVisible): 
+      target.blit(
+          (x: self.x, y: self.y, width: target.w, height: target.h),
+          self.s, (x:0, y:0, width: self.s.w, height: self.s.h)
+      )

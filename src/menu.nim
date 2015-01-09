@@ -12,11 +12,16 @@ method enter*(self: ref MenuScene) =
   self.play_msg = self.ctl.addMessage(
     "Press Enter to Play", "title", 100, 200)
   self.quit_msg = self.ctl.addMessage(
-    "Press Space to Quit", "title", 100, 250)
+    "Press Space to Quit", "title", 100, 280)
 
   self.title_msg.isVisible = true
   self.play_msg.isVisible = true
   self.quit_msg.isVisible = true
+
+method leave*(self: ref MenuScene) =
+  self.title_msg.isVisible = false
+  self.play_msg.isVisible = false
+  self.quit_msg.isVisible = false
 
 method key_down*(self: ref MenuScene, key: TKey, mods: TMod) =
   case key:

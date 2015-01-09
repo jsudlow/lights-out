@@ -50,4 +50,5 @@ type
     s*: graphics.PSurface
     isVisible*: bool
 
-
+  ResourceManager*[T] = Table[string, T]
+    
