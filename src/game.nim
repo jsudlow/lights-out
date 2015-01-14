@@ -2,6 +2,13 @@ import sdl, graphics, colors
 
 import hoversystem, clicksystem, controller
 
+proc hasPlayerWon*(self: ref GameScene): bool =
+    var x = self.grid    
+    for i in low(x)..high(x):    
+        if(x[i]):    
+            return false   
+    return true
+ 
 method enter*(self: ref GameScene) =
   self.hoverSystem = newHoverSystem(self)
   self.clickSystem = newClickSystem(self)
@@ -9,7 +16,7 @@ method enter*(self: ref GameScene) =
 
 method update*(self: ref GameScene, t, dt: int) =
   self.hoverSystem.update(t, dt)
-  var hasWon = self.ctl.hasPlayerWon()
+  var hasWon = self.hasPlayerWon()
   self.hasWon = hasWon
 
 method mouse_down*(self: ref GameScene, event: PMouseButtonEvent) =

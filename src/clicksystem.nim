@@ -7,9 +7,10 @@ proc newClickSystem*(scene: ref GameScene): ref ClickSystem =
   result.scene = scene
 
 proc flip_neighbors*(self: ref ClickSystem,  i :int, k :int) =
+
   var active = self.scene.grid[(k * NUM_SQUARES) + i]
   self.scene.grid[(k * NUM_SQUARES) + i] = not active
-
+  
   #neighbor to the north
   if k > 0:
       var north_x = i
