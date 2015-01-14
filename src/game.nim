@@ -26,7 +26,7 @@ method draw*(self: ref GameScene) =
       var color = SQUARE_COLOR
       if self.hoverSystem.i == i and self.hoverSystem.k == k:
         color = SQUARE_HIGHLIGHT
-      if self.ctl.grid[(k * NUM_SQUARES) + i]:
+      if self.grid[(k * NUM_SQUARES) + i]:
         color = SQUARE_HIGHLIGHT
       if (self.hasWon):
         color = WIN_COLOR

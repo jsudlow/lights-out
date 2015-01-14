@@ -1,4 +1,4 @@
-import app, menu, game
+import app, src/menu, src/game
 
 var menu_scene = new MenuScene
 var game_app = new(App)
